@@ -22,7 +22,7 @@ def download():
 
     video = yt.streams.first()
 
-    video.download()
+    print(video)
 
     return send_file(f'{video.default_filename}', as_attachment=True, cache_timeout=0)
 
