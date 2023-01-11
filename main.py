@@ -4,6 +4,13 @@ import json
 from flask import Flask, request
 app = Flask(__name__)
 
+@app.route("/")
+
+def index():
+
+    return render_template("index.html")
+
+
 @app.route('/convert-to-pdf', methods=['POST'])
 def convert_to_pdf():
     form_data = json.loads(request.data)
