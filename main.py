@@ -1,7 +1,7 @@
 from fpdf import FPDF
 import json
 
-from flask import Flask, request
+from flask import Flask,render_template, request
 app = Flask(__name__)
 
 @app.route("/")
