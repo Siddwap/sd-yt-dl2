@@ -4,8 +4,6 @@ flask
 
 fpdf
 
-json
-
 requests
 
 gunicorn
