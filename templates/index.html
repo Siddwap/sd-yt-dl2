@@ -1,34 +1,64 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
+  <title>My Form</title>
+  <style>
+    /* CSS styles go here */
+    form {
+        width: 50%;
+        margin: auto;
+    }
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
 
-    <title>YouTube Video Downloader</title>
+    input[type="text"], input[type="email"] {
+        padding: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
 
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+  </style>
 </head>
-
 <body>
+  <h1>Contact Us</h1>
+  <form id="form" action="submitForm" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+  <script>
+    // add event listener for form submission
+    document.getElementById("form").addEventListener("submit", function(event) {
+      event.preventDefault(); // prevent the form from submitting
+      
+      // get the values from the form fields
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
 
-    <div class="container">
-
-        <h1>YouTube Video Downloader</h1>
-
-        <form action="/download" method="post">
-
-            <label for="video_url">Enter Video URL:</label>
-
-            <input type="text" id="video_url" name="video_url" required>
-
-            <button type="submit" id="download-btn">Download</button>
-
-        </form>
-
-    </div>
-
+      // make a POST request to a Python script to convert the form to a PDF
+      fetch("/convert-to-pdf", {
+        method: "POST",
+        body: JSON.stringify({name: name, email: email})
+      });
+    });
+  </script>
 </body>
-
 </html>
-
